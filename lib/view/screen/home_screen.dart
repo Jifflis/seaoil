@@ -205,14 +205,19 @@ class _HomeScreenState extends State<HomeScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          model.selectedStation == null ? 'Nearby Stations' : 'Back to list',
-          style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: model.selectedStation == null
-                  ? Colors.black87
-                  : CustomColors.blue400),
+        InkWell(
+          onTap: model.selectedStation==null?null:(){
+            model.resetSelectedStation(context);
+          },
+          child: Text(
+            model.selectedStation == null ? 'Nearby Stations' : 'Back to list',
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: model.selectedStation == null
+                    ? Colors.black87
+                    : CustomColors.blue400),
+          ),
         ),
         TextButton(
           onPressed: model.selectedStation != null
